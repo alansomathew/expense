@@ -171,7 +171,7 @@ class _AddBankCardState extends State<AddBankCard> {
                             print("CARD NUMBER AVAILABLE");
 
                             //INSERTION
-                            await DatabaseService(uid: globals.userData.uid).updateWallet(
+                            await DatabaseService(uid: globals.userData.uid!).updateWallet(
                               new BankCard(
                                 bankName: _bankName,
                                 cardNumber: _cardNumber,

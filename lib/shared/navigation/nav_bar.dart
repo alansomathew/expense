@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc/bloc.dart';
@@ -27,6 +28,8 @@ enum NavigationEvents {
 abstract class NavigationStates {}
 
 class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
+  NavigationBloc(super.initialState);
+
   @override
   NavigationStates get initialState => Home();
 
@@ -115,7 +118,7 @@ class _NavBarState extends State<NavBar> with SingleTickerProviderStateMixin<Nav
 
 class NavBarLayout extends StatefulWidget {
   
-  final User user;
+  final CurrentUser user;
 
   NavBarLayout({ Key ?key, required this.user }) : super(key: key);
 
@@ -249,7 +252,7 @@ class _NavBarLayoutState extends State<NavBarLayout> {
   Widget build(BuildContext context) {
 
     return BlocProvider<NavigationBloc>(
-      create: (context) => NavigationBloc(),
+      create: (context) => NavigationBloc(Home()),
       
       child: loading ? Loading() : Scaffold( key: globals.scaffoldKey,
         backgroundColor: kBackground,

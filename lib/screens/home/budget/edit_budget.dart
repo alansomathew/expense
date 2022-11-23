@@ -77,7 +77,7 @@ class _EditBudgetState extends State<EditBudget> {
                           if(_formKey.currentState!.validate()){
 
                             //Update DB record
-                            await DatabaseService(uid: globals.userData.uid).updateBudget(
+                            await DatabaseService(uid: globals.userData.uid!).updateBudget(
                               new Budget(
                                 limit: double.parse(_limit), 
                                 month: _month

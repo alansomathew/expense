@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sk_onboarding_screen/flutter_onboarding.dart';
-import 'package:sk_onboarding_screen/sk_onboarding_screen.dart';
+// import 'package:sk_onboarding_screen/flutter_onboarding.dart';
+// import 'package:sk_onboarding_screen/sk_onboarding_screen.dart';
+import 'package:onboarding_screen/onboarding_screen.dart';
 
 import '../wrapper.dart';
 import '../../shared/theme.dart';
@@ -39,46 +40,104 @@ class OnboardContent extends StatelessWidget {
 
   final Function toggleView;
   OnboardContent({super.key, required this.toggleView});
+  final PageController _controller = PageController();
 
-  final pages = [
-    SkOnboardingModel(
+  final  List<_SliderModel> mySlides= [
+
+    _SliderModel(
         title: 'TRACK EXPENSES',
-        description:
+        desc:
             'List down latest transactions ans set monthly budgets to keep track of your spending',
-        titleColor: Colors.black,
-        descripColor: const Color(0xFF929794),
-        imagePath: 'assets/images/track_expenses.png'),
-    SkOnboardingModel(
+        titleStyle:TextStyle( color: Colors.black),
+        descStyle: const TextStyle( color:  Color(0xFF929794)),
+        imageAssetPath: Image.asset('assets/images/track_expenses.png')),
+    _SliderModel(
         title: 'ALL-IN-ONE FINANCE',
-        description:
+        desc:
             'We bring together everything to give you a clearer look at your finances',
-        titleColor: Colors.black,
-        descripColor: const Color(0xFF929794),
-        imagePath: 'assets/images/allinone_finance.png'),
-    SkOnboardingModel(
+        titleStyle: TextStyle( color:Colors.black),
+        descStyle: const TextStyle( color: Color(0xFF929794)),
+        imageAssetPath: Image.asset('assets/images/allinone_finance.png')),
+    _SliderModel(
         title: 'INTUITIVE GRAPHS',
-        description: 'Visualize your monthly expenses to evalute and improve your spending habits',
-        titleColor: Colors.black,
-        descripColor: const Color(0xFF929794),
-        imagePath: 'assets/images/intuitive_graphs.png'),
+        desc: 'Visualize your monthly expenses to evalute and improve your spending habits',
+        titleStyle: TextStyle( color: Colors.black),
+        descStyle: const TextStyle( color: Color(0xFF929794)),
+        imageAssetPath: Image.asset('assets/images/intuitive_graphs.png')),
   ];
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SKOnboardingScreen(
-        bgColor: kBackground,
-        themeColor: kPrimary,
-        pages: pages,
-        skipClicked: (value) {
-          print("Skip");
-          toggleView();
+      body: OnBoardingScreen(
+        label: const Text(
+          'Get Started',
+          key: Key('get_started'),
+        ),
+
+        /// This function works when you will complete `OnBoarding`
+        function: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (_) => toggleView(),
+            ),
+          );
         },
-        getStartedClicked: (value) {
-          print("Get Started");
-          toggleView();
-        },
+
+        /// This [mySlides] must not be more than 5.
+        mySlides: mySlides,
+        controller: _controller,
+        slideIndex: 0,
+        statusBarColor: Colors.white,
+        indicators: Indicators.cool,
+        skipPosition: SkipPosition.bottomRight,
+
+        skipDecoration: BoxDecoration(
+          color: Colors.blue,
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        skipStyle: TextStyle(color: Colors.white),
+
+        pageIndicatorColorList: [
+          Colors.yellow,
+          Colors.green,
+          Colors.red,
+          Colors.yellow,
+          Colors.blue
+        ],
+        // bgColor: kBackground,
+        // themeColor: kPrimary,
+        //
+        // skipClicked: (value) {
+        //   print("Skip");
+        //   toggleView();
+        // },
+        // getStartedClicked: (value) {
+        //   print("Get Started");
+        //   toggleView();
+        // },
       ),
     );
   }
+}
+
+class _SliderModel {
+  const _SliderModel({
+    this.imageAssetPath,
+    this.title = "title",
+    this.desc = "title",
+    this.miniDescFontSize = 12.0,
+    this.minTitleFontSize = 15.0,
+    this.descStyle,
+    this.titleStyle,
+  });
+
+  final Image? imageAssetPath;
+  final String title;
+  final TextStyle? titleStyle;
+  final double minTitleFontSize;
+  final String desc;
+  final TextStyle? descStyle;
+  final double miniDescFontSize;
 }

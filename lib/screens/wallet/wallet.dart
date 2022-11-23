@@ -59,7 +59,7 @@ class _WalletState extends State<Wallet> {
                   },
                 ),
                 itemCount: wallet.length + 1, //6 cards + 1 blank
-                itemBuilder: (BuildContext context, int index){
+                itemBuilder: (BuildContext context, int index, int pageViewIndex)  {
                   if(index >=0 && index < wallet.length){
                     return CreditCard(bankCard: wallet[index]);
                   }

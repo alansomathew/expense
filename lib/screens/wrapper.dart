@@ -19,10 +19,10 @@ class Wrapper extends StatelessWidget {
     print("PREFS RECEIVED FOR STATUS -> ${sharedPrefs.getBool('initialLoad')}");
 
     //Retrieve USER object from StreamProvider in main.dart
-    final user = Provider.of<User>(context);
+    final user = Provider.of<CurrentUser>(context);
     print(user);
 
-    if(initialLoad){
+    if(initialLoad!){
       return Onboard(sharedPrefs);
     }
     else{

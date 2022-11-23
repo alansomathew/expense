@@ -1,9 +1,9 @@
-class User{
+class CurrentUser{
 
-  final String ?uid;
+  final String uid;
 
   ///Constructor
-  User({ this.uid });
+  CurrentUser({ required this.uid });
 }
 
 class UserData{

@@ -274,7 +274,7 @@ class _AddTransactionState extends State<AddTransaction> {
                           if(_formKey.currentState!.validate()){
 
                             //Update DB record
-                            await DatabaseService(uid: globals.userData.uid).updateTransactionList(
+                            await DatabaseService(uid: globals.userData.uid!).updateTransactionList(
                               new TransactionRecord(
                                 type: _type,
                                 title: _title, 

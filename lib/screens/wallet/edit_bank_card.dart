@@ -207,14 +207,14 @@ class _EditBankCardState extends State<EditBankCard> {
 
                               if (_formKey.currentState!.validate()) {
                                 //REMOVAL
-                                await DatabaseService(uid: globals.userData.uid)
+                                await DatabaseService(uid: globals.userData.uid!)
                                     .deleteBankCard(widget.bankCard!);
 
                                 globals.wallet.removeWhere(
                                     (t) => identical(t, widget.bankCard));
 
                                 //INSERTION
-                                await DatabaseService(uid: globals.userData.uid)
+                                await DatabaseService(uid: globals.userData.uid!)
                                     .updateWallet(new BankCard(
                                         bankName: _bankName,
                                         cardNumber: _cardNumber,
@@ -283,14 +283,14 @@ class _EditBankCardState extends State<EditBankCard> {
                                 linkedRecords.forEach((record) async {
                                   //TRANSACTION DELETION
                                   await DatabaseService(
-                                          uid: globals.userData.uid)
+                                          uid: globals.userData.uid!)
                                       .deleteTransactionRecord(record);
                                   globals.transactions
                                       .removeWhere((t) => identical(t, record));
                                 });
 
                                 //CARD DELETION
-                                await DatabaseService(uid: globals.userData.uid)
+                                await DatabaseService(uid: globals.userData.uid!)
                                     .deleteBankCard(widget.bankCard!);
                                 globals.wallet.removeWhere(
                                     (t) => identical(t, widget.bankCard));

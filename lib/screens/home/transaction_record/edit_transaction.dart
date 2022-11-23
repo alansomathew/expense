@@ -281,14 +281,14 @@ class _EditTransactionState extends State<EditTransaction> {
                         if(_formKey.currentState!.validate()){
 
                           //Delete DB record
-                          await DatabaseService(uid: globals.userData.uid).deleteTransactionRecord(
+                          await DatabaseService(uid: globals.userData.uid!).deleteTransactionRecord(
                             widget.transactionRecord
                           );
 
                           globals.transactions.removeWhere((t) => identical(t, widget.transactionRecord));
 
                           //Update DB record
-                          await DatabaseService(uid: globals.userData.uid).updateTransactionList(
+                          await DatabaseService(uid: globals.userData.uid!).updateTransactionList(
                             new TransactionRecord(
                               type: _type,
                               title: _title, 
@@ -359,7 +359,7 @@ class _EditTransactionState extends State<EditTransaction> {
                                 // TransactionRecord tr = widget.transactionRecord;
 
                                 //Delete DB record
-                                await DatabaseService(uid: globals.userData.uid).deleteTransactionRecord(
+                                await DatabaseService(uid: globals.userData.uid!).deleteTransactionRecord(
                                   widget.transactionRecord
                                 );
 

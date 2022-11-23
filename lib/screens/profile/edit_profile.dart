@@ -127,7 +127,7 @@ class _EditProfileState extends State<EditProfile> {
                         else if(_currentEmail == widget.userData!.email){
                           setState(() => loading = true);
 
-                          await DatabaseService(uid: globals.userData.uid).updateUserData(_currentFullName, widget.userData!.email!, avatar: globals.userData.avatar);
+                          await DatabaseService(uid: globals.userData.uid!).updateUserData(_currentFullName, widget.userData!.email!, avatar: globals.userData.avatar);
 
                           setState(() => loading = false);
 

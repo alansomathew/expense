@@ -49,8 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '995398933121',
     projectId: 'expense-app-c4499',
     authDomain: 'expense-app-c4499.firebaseapp.com',
-    databaseURL:
-        'https://expense-app-c4499-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://expense-app-c4499-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'expense-app-c4499.appspot.com',
     measurementId: 'G-C9L05GTX9R',
   );
@@ -60,8 +59,7 @@ class DefaultFirebaseOptions {
     appId: '1:995398933121:android:e0e8acfd33165577d50b80',
     messagingSenderId: '995398933121',
     projectId: 'expense-app-c4499',
-    databaseURL:
-        'https://expense-app-c4499-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://expense-app-c4499-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'expense-app-c4499.appspot.com',
   );
 
@@ -70,11 +68,9 @@ class DefaultFirebaseOptions {
     appId: '1:995398933121:ios:ba0cc164bd604c5cd50b80',
     messagingSenderId: '995398933121',
     projectId: 'expense-app-c4499',
-    databaseURL:
-        'https://expense-app-c4499-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://expense-app-c4499-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'expense-app-c4499.appspot.com',
-    iosClientId:
-        '995398933121-ev7kb41t75hjq79uji69nhvesikfrf4p.apps.googleusercontent.com',
+    iosClientId: '995398933121-ev7kb41t75hjq79uji69nhvesikfrf4p.apps.googleusercontent.com',
     iosBundleId: 'com.example.xpense',
   );
 
@@ -83,11 +79,9 @@ class DefaultFirebaseOptions {
     appId: '1:995398933121:ios:ba0cc164bd604c5cd50b80',
     messagingSenderId: '995398933121',
     projectId: 'expense-app-c4499',
-    databaseURL:
-        'https://expense-app-c4499-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://expense-app-c4499-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'expense-app-c4499.appspot.com',
-    iosClientId:
-        '995398933121-ev7kb41t75hjq79uji69nhvesikfrf4p.apps.googleusercontent.com',
+    iosClientId: '995398933121-ev7kb41t75hjq79uji69nhvesikfrf4p.apps.googleusercontent.com',
     iosBundleId: 'com.example.xpense',
   );
 }

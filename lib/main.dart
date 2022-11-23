@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,28 +12,27 @@ import './models/user.dart';
 Future<void> main() async {
   // Ensure all plugins are initialized
   WidgetsFlutterBinding.ensureInitialized();
-   
+  Firebase.initializeApp();
   // Apply application UI overlay (FULL SCREEN)
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []).then((_) {
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [])
+      .then((_) {
     // Retrieve stored preferences before starting application
     Future<SharedPreferences> sharedPrefs = SharedPreferences.getInstance();
     sharedPrefs.then((prefs) {
       var initialLoad = prefs.getBool('initialLoad') ?? true;
-      if(initialLoad) prefs.setBool('initialLoad', initialLoad);
+      if (initialLoad) prefs.setBool('initialLoad', initialLoad);
       runApp(MyApp(sharedPrefs: prefs));
     });
   });
 }
 
 class MyApp extends StatelessWidget {
-
   final SharedPreferences sharedPrefs;
   MyApp({required this.sharedPrefs});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     //Restrict portrait mode only
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
@@ -40,15 +40,16 @@ class MyApp extends StatelessWidget {
     ]);
 
     // Retrieve User object from stream
-    return StreamProvider<User>.value(
+    return StreamProvider.value(
       value: AuthService().user,
 
       //Application
+
+      initialData: [],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Wrapper(sharedPrefs),
       ),
-
     );
   }
 }
